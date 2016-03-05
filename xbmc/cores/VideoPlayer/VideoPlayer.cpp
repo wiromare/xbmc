@@ -3121,12 +3121,9 @@ void CVideoPlayer::GetGeneralInfo(std::string& strGeneralInfo)
           strBuf += StringUtils::Format(" %d sec", DVD_TIME_TO_SEC(m_State.cache_delay));
       }
 
-      strGeneralInfo = StringUtils::Format("C( a/v:% 6.3f%s, dcpu:%2i%% acpu:%2i%% vcpu:%2i%%%s amp:% 5.2f )"
+      strGeneralInfo = StringUtils::Format("C( a/v:% 6.3f%s, %s amp:% 5.2f )"
           , dDiff
           , strEDL.c_str()
-          , (int)(CThread::GetRelativeUsage()*100)
-          , (int)(m_VideoPlayerAudio->GetRelativeUsage()*100)
-          , (int)(m_VideoPlayerVideo->GetRelativeUsage()*100)
           , strBuf.c_str()
           , m_VideoPlayerAudio->GetDynamicRangeAmplification());
     }
@@ -3152,12 +3149,9 @@ void CVideoPlayer::GetGeneralInfo(std::string& strGeneralInfo)
           strBuf += StringUtils::Format(" %d sec", DVD_TIME_TO_SEC(m_State.cache_delay));
       }
 
-      strGeneralInfo = StringUtils::Format("Player: ad:% 6.3f, a/v:% 6.3f, dcpu:%2i%% acpu:%2i%% vcpu:%2i%%%s"
+      strGeneralInfo = StringUtils::Format("Player: ad:% 6.3f, a/v:% 6.3f, %s"
                                            , dDelay
                                            , dDiff
-                                           , (int)(CThread::GetRelativeUsage()*100)
-                                           , (int)(m_VideoPlayerAudio->GetRelativeUsage()*100)
-                                           , (int)(m_VideoPlayerVideo->GetRelativeUsage()*100)
                                            , strBuf.c_str());
     }
   }
