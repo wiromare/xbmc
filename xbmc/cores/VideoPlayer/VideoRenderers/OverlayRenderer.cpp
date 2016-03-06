@@ -74,10 +74,13 @@ void CRenderer::AddOverlay(CDVDOverlay* o, double pts, int index)
 {
   CSingleLock lock(m_section);
 
-  SElement   e;
-  e.pts = pts;
-  e.overlay_dvd = o->Acquire();
-  m_buffers[index].push_back(e);
+  if (o)
+  {
+    SElement   e;
+    e.pts = pts;
+    e.overlay_dvd = o->Acquire();
+    m_buffers[index].push_back(e);
+  }
 }
 
 void CRenderer::Release(std::vector<SElement>& list)
